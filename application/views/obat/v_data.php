@@ -4,7 +4,7 @@
             <div class="card-header bg-primary text-white">
                 <?= $title; ?>
 
-                <a href="<?= base_url('users/tambah'); ?>" class="btn btn-success btn-sm float-right">Tambah Data</a>
+                <a href="<?= base_url('obat/tambah'); ?>" class="btn btn-success btn-sm float-right">Tambah Data</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -12,21 +12,19 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Username</th>
-                                <th>Nama Lengkap</th>
+                                <th>Nama Obat</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no=1; foreach($users as $r){ ?>
+                            <?php $no=1; foreach($obat as $r){ ?>
                                 <tr> 
                                     <td class="text-center"><?= $no; ?></td>
-                                    <td><?= $r['username']; ?></td>
-                                    <td><?= $r['nama_lengkap']; ?></td>
+                                    <td><?= $r['nama_obat']; ?></td>
                                     <td>
-                                        <a href="<?= base_url().'users/edit/'.$r['id'];?>" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="<?= base_url().'obat/edit/'.$r['id_obat'];?>" class="btn btn-warning btn-sm">Edit</a>
                                         
-                                        <a href="<?= base_url().'users/hapus/'.$r['id'];?>" class="btn btn-danger btn-sm" 
+                                        <a href="<?= base_url().'obat/hapus/'.$r['id_obat'];?>" class="btn btn-danger btn-sm" 
                                         onClick="return  confirm('Yakin akan menghapus data?')">Hapus</a>
                                 </tr>
                             <?php $no++; } ?>

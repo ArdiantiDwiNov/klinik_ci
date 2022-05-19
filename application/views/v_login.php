@@ -46,7 +46,7 @@
     <label for="Password" class="sr-only">Password</label>
     <input type="password" id="Password" name="password" class="form-control" placeholder="Password">
     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2022 - Ardianti Dwi Novia</p>
+    <p class="mt-5 mb-3 text-muted">&copy; 2022 - KELOMPOK 2</p>
 </form>
 </body>
 </html>

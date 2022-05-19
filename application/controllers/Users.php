@@ -10,7 +10,7 @@ class Users extends CI_Controller {
             redirect  ('auth');
         }
 
-        $this->load->model('m_users');
+        $this->load->model('M_users');
     }
 
 	public function index()
@@ -18,7 +18,7 @@ class Users extends CI_Controller {
 	{
         $data['title'] = "Manajemen Data Users";
 
-        $data['users'] = $this->m_users->tampil_data()->result_array();
+        $data['users'] = $this->M_users->tampil_data()->result_array();
 
 		$this->load->view('v_header', $data);
         $this->load->view('users/v_data', $data);
@@ -52,12 +52,35 @@ class Users extends CI_Controller {
     function edit($id){
         $data['title'] = "Edit Data Users";
 
+        $where = array('id' => $id);
+        $data['r'] = $this->M_users->edit_data($where)->row_array();
+
         $this->load->view('v_header', $data);
-        $this->load->view('users/v_data_tambah', $data);
+        $this->load->view('users/v_data_edit', $data);
         $this->load->view('v_footer');
     }
 
     function update(){
+        $id = $this->input->post('id');
+        $u = $this->input->post('username');
+        $n = $this->input->post('nama_lengkap');
+        $p = md5($this->input->post('password'));
 
+        $data = array(
+            'username' => $u,
+            'nama_lengkap' => $n,
+            'password' => $p 
+        );
+
+        $where = array('id' => $id);
+        $this->M_users->update_data($data, $where);
+
+        redirect('users');
+    }
+
+    function hapus($id){
+        $where = array('id' => $id);
+        $this->M_users->hapus_data($where);
+        redirect('users');
     }
 }
